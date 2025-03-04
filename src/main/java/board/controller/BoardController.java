@@ -121,8 +121,16 @@ public class BoardController {
 		model.addAttribute("wbackurl", "?type=f&w=50&h=50&faceopt=true&ttype=jpg");
 		model.addAttribute("naverurl", "https://kr.object.ncloudstorage.com/"+bucketName);
 		
-		String loginid = (String) session.getAttribute("loginid");
-		String writer = memberService.getSelectByMyid(loginid).getMname();
+		String loginid;
+		String writer;
+		
+		if(session.getAttribute("loginid") == null) {
+			writer = "";
+			return "redirect:./list";
+		} else {
+			loginid = (String) session.getAttribute("loginid");
+			writer = memberService.getSelectByMyid(loginid).getMname();
+		}
 		model.addAttribute("writer", writer);
 		
 		return "board/boarddetail";
