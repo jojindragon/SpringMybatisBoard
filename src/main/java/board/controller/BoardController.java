@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import data.dto.BoardDto;
 import data.dto.BoardFileDto;
-import data.dto.MemberDto;
+//import data.dto.MemberDto;
 import data.service.BoardFileService;
 import data.service.BoardService;
 import data.service.MemberService;
@@ -126,7 +126,7 @@ public class BoardController {
 		
 		if(session.getAttribute("loginid") == null) {
 			writer = "";
-			return "redirect:./list";
+			//return "redirect:./list";
 		} else {
 			loginid = (String) session.getAttribute("loginid");
 			writer = memberService.getSelectByMyid(loginid).getMname();
